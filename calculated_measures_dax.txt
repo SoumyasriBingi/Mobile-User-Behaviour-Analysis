@@ -1,0 +1,17 @@
+-- DAX Calculated Measures Used in Power BI
+
+App Usage Efficiency = DIVIDE([App Usage (Min)], [Screen Time (Hrs)])
+
+Total App Usage (K) = SUM([App Usage (Min)]) / 1000
+
+Total Mobile Data (K) = SUM([Mobile Data Usage]) / 1000
+
+Behavior Class Avg = AVERAGE([Behavior Class])
+
+Battery Drain per Device = AVERAGE([Battery Drain (mAh)])
+
+App Usage by Behavior Class = 
+    AVERAGEX(
+        VALUES('user_behavior_dataset'[Behavior Class]),
+        [App Usage Efficiency]
+    )
